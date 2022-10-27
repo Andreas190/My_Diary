@@ -1,0 +1,20 @@
+[
+  {
+    "name" : "Lena",
+    "adress" : "Sten sturegatan 33",
+    "favouriteCandy" : "Turkis peppar",
+    "age" : 33
+  },
+  {
+    "name" : "Agnes",
+    "adress" : "Hemvägen 3",
+    "favouriteCandy" : "Hallonbåtar",
+    "age" : 40
+  },
+  {
+    "name" : "My",
+    "adress" : "Smörgatan 5",
+    "favouriteCandy" : "Fillidutter",
+    "age" : 7
+  }
+]
