@@ -8,13 +8,15 @@ public class Main {
 
         String name = "";
 
+        do {
+
+
             switch (name) {
                 case "0":
-                name.isEmpty();
-                System.out.print("Skriv in ditt namn ");
-                name = userInput.nextLine().trim();
-                break;
-
+                    name.isEmpty();
+                    System.out.print("Skriv in ditt namn ");
+                    name = userInput.nextLine().trim();
+                    break;
 
                 case "1":
                     name.isEmpty();
@@ -33,10 +35,11 @@ public class Main {
                     System.out.print("Skriv in ditt namn ");
                     name = userInput.nextLine().trim();
                     break;
-
             }
-        }
 
+        }while (name.length() > 2) ;
     }
+}
+
 
 
