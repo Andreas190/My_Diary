@@ -1,22 +1,14 @@
-
 public class Entry {
-    private String date;
     private String title;
     private String text;
+    private String date;
 
     public Entry() {
     }
-    public Entry(String date, String title, String text) {
-        this.date = date;
+
+    public Entry(String title, String text, String date) {
         this.title = title;
         this.text = text;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
         this.date = date;
     }
 
@@ -36,12 +28,20 @@ public class Entry {
         this.text = text;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Entry{" +
-                "date='" + date + '\'' +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", text='" + text + '\'' +
+                ", date='" + date + '\'' +
                 '}';
     }
 }

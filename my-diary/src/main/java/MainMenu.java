@@ -5,14 +5,10 @@ public class MainMenu {
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
-        // diary instance
-        Diary diary = new Diary();
-
         String choice = "0";
         /**
          * Main loop. */
         while (!choice.equals("3")) {
-            diary.mainMenu();
             System.out.println();
             System.out.println("Välj ett alternativ");
             System.out.println("1: Skriv ett inlägg.");
@@ -23,10 +19,10 @@ public class MainMenu {
             // reaction to the choice
             switch (choice) {
                 case "1":
-                    diary.newEntry();
+                    Diary.newEntry();
                     break;
                 case "2":
-                    diary.searchEntries();
+                    Diary.searchEntries();
                     break;
                 case "3":
                     System.out.println("Programmet avslutas. Hej då!");

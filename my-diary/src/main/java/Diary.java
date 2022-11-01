@@ -33,7 +33,6 @@ public class Diary {
     }
 
     static Entry newEntry() {
-        //Date dateOne = new Date();
         System.out.println("Skriv in en titel");
         String title = scanner.nextLine();
         System.out.println("Börja skriva ditt inlägg");
@@ -50,17 +49,20 @@ public class Diary {
         }
     }
 
-    void searchEntries() {
+    static void searchEntries() {
 
-        if (allEntries.size() > 0)
-            for (Entry entry : allEntries){
+        if (allEntries.size() > 0){
+            for (Entry entry : allEntries) {
                 System.out.println("Titel - " + newEntry().getTitle());
                 System.out.println("Inlägg - " + newEntry().getText());
                 System.out.println("Datum - " + newEntry().getDate());
+                System.out.println("-----------------------------------------------------");
 
             }
+        scanner.nextLine();
+    }
         else {
-            System.out.println("Inga inlägg hittade");
+            System.out.println("Inga inlägg hittade. Tryck enter för att komma till menyn");
         }
         scanner.nextLine(); // wait for enter
     }

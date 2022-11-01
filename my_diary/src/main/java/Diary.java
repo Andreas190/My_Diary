@@ -1,5 +1,4 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -10,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Diary {
+
     private static final Scanner scanner = new Scanner(System.in);
     private static final ObjectMapper mapper = new ObjectMapper();
     private static final Path path = Paths.get("src/main/resources/entries.json");
@@ -22,11 +22,13 @@ public class Diary {
             e.printStackTrace();
         }
     }
+
     /**
-     *Different methods
+     * Different methods
      */
 
     public static void addEntry() throws IOException {
+
         allEntries = List.of(mapper.readValue(path.toFile(), Entry[].class));
         List<Entry> entries = new ArrayList<>(allEntries);
         entries.add(newEntry());
@@ -34,41 +36,49 @@ public class Diary {
     }
 
     static Entry newEntry() {
-        //Date dateOne = new Date();
         System.out.println("Skriv in en titel");
         String title = scanner.nextLine();
         System.out.println("Börja skriva ditt inlägg");
         String text = scanner.nextLine();
         String date = dtf.format(localDate).toString();
-        return new Entry(date, title, text);
+        return new Entry(title, text, date);
 
     }
 
-    public void printEntries() throws IOException {
+    public static void printEntries() throws IOException {
         List<Entry> entriesJSONUpdated = List.of(mapper.readValue(path.toFile(), Entry[].class));
         for (Entry entry : entriesJSONUpdated) {
             searchEntries();
         }
     }
 
-    void searchEntries() {
+    static void searchEntries() {
 
-        if (allEntries.size() > 0)
-            for (Entry entry : allEntries){
-                System.out.println("Titel - " + newEntry().getTitle());
-                System.out.println("Inlägg - " + newEntry().getText());
-                System.out.println("Datum - " + newEntry().getDate());
-
+        for (Entry entry : allEntries){
+                System.out.println("Titel - " + entry.getTitle());
+                System.out.println("Inlägg - " + entry.getText());
+                System.out.println("Datum - " + entry.getDate());
             }
-        else {
-            System.out.println("Inga inlägg hittade");
-        }
-        scanner.nextLine(); // wait for enter
+            backToMenu();
     }
 
     static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd");
     static LocalDate localDate = LocalDate.now();
 
-    public void mainMenu() {
+    public static void mainMenu() {
+        System.out.println("Välj ett alternativ och tryck Enter");
+        System.out.println("1: Skriv ett inlägg.");
+        System.out.println("2: Läs tidigare inlägg");
+        System.out.println("3: Avsluta programmet");
+        String enter = scanner.nextLine();
+    }
+
+    public static void backToMenu() {
+        System.out.println("Tryck enter för att gå till meny");
+        try {
+            scanner.nextLine();
+            mainMenu();
+        } catch (Exception e) {
+        }
     }
 }
